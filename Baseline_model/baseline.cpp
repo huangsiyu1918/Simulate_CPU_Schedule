@@ -1,20 +1,11 @@
-// a1234567, Stark, Tony
-// a2345678, Rogers, Steve
-// a3456789, Banner, Bruce
-// avengers
-/*
-created by Andrey Kan
-andrey.kan@adelaide.edu.au
-2021
-*/
 #include <iostream>
 #include <fstream>
 #include <deque>
 #include <vector>
 
 // std is a namespace: https://www.cplusplus.com/doc/oldtutorial/namespaces/
-const int TIME_ALLOWANCE = 8;  // allow to use up to this number of time slots at once
-const int PRINT_LOG = 0; // print detailed execution trace
+const int TIME_ALLOWANCE = 8; // allow to use up to this number of time slots at once
+const int PRINT_LOG = 0;      // print detailed execution trace
 
 class Customer
 {
@@ -39,7 +30,7 @@ class Event
 {
 public:
     int event_time;
-    int customer_id;  // each event involes exactly one customer
+    int customer_id; // each event involes exactly one customer
 
     Event(int par_event_time, int par_customer_id)
     {
@@ -117,13 +108,13 @@ int main(int argc, char *argv[])
     // deque: https://www.geeksforgeeks.org/deque-cpp-stl/
     // vector: https://www.geeksforgeeks.org/vector-in-cpp-stl/
     std::deque<Event> arrival_events; // new customer arrivals
-    std::vector<Customer> customers; // information about each customer
+    std::vector<Customer> customers;  // information about each customer
 
     // read information from file, initialize events queue
     initialize_system(in_file, arrival_events, customers);
 
-    int current_id = -1; // who is using the machine now, -1 means nobody
-    int time_out = -1; // time when current customer will be preempted
+    int current_id = -1;   // who is using the machine now, -1 means nobody
+    int time_out = -1;     // time when current customer will be preempted
     std::deque<int> queue; // waiting queue
 
     // step by step simulation of each time slot
